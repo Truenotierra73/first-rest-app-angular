@@ -1,0 +1,14 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<div class="container m-5" *ngIf="!loading">
+    <ul>
+        <li *ngFor="let user of users">
+            <img [src]="user.avatar | noimage">
+            <p>{{ user.first_name }} {{ user.last_name }}</p>
+            <div style="padding-top: 5px; width: 18rem;">
+                <button type="button" class="btn btn-sm btn-outline-primary" (click)="detalleUsuario(user.id)">Ver</button>
+            </div>
+        </li>
+    </ul>
+    <app-paginador (pageSeleccionada)="setPage($event)" [config]="config"></app-paginador>
+</div>

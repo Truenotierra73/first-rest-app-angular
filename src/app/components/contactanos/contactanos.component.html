@@ -1,0 +1,25 @@
+<div class="container m-5">
+    <form action="" [formGroup]="mensajeForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" formControlName="nombre" class="form-control" [ngClass]="{ 'is-invalid': enviado && mensajeForm.controls.nombre.errors, 'is-valid': enviado && !mensajeForm.controls.nombre.errors }">
+            <div *ngIf="enviado && mensajeForm.controls.nombre.errors" class="invalid-feedback">
+                <div *ngIf="mensajeForm.controls.nombre.errors.required">El nombre es requerido</div>
+            </div>
+            <div *ngIf="enviado && !mensajeForm.controls.nombre.errors" class="valid-feedback">
+                Está todo ok!
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="mensaje">Mensaje:</label>
+            <textarea formControlName="mensaje" class="form-control" [ngClass]="{ 'is-invalid': enviado && mensajeForm.controls.mensaje.errors, 'is-valid': enviado && !mensajeForm.controls.mensaje.errors }"></textarea>
+            <div *ngIf="enviado && mensajeForm.controls.mensaje.errors" class="invalid-feedback">
+                <div *ngIf="mensajeForm.controls.mensaje.errors.required">Un mensaje es requerido</div>
+            </div>
+            <div *ngIf="enviado && !mensajeForm.controls.mensaje.errors" class="valid-feedback">
+                Está todo ok!
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
